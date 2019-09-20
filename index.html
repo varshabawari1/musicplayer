@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <link rel="shortcut icon" href="#" />
+    <title>Apple MusicKit Example</title>
+</head>
+
+<body>
+    <label>Type (eg 'album' 'song')</label>
+    <input id="type-input" type="text" value="song">
+    <br>
+    <label>id</label>
+    <input id="id-input" type="text" value="203709340">
+    <br>
+    <button id="add-to-q-btn">Add to Queue</button>
+    <br>
+    <button id="play-btn">Play</button>
+    <button id="pause-btn">Pause</button>
+    <button id="login-btn">Login to Apple Music</button>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+    <script type="text/javascript">
+        // listen for MusicKit Loaded callback
+        document.addEventListener('musickitloaded', () => {
+            // MusicKit global is now defined
+            /***
+            Configure our MusicKit instance with the signed token from server, returns a configured MusicKit Instance
+            https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance
+            ***/
+            const music = MusicKit.configure({
+                developerToken: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZBN1BBNUZONk4ifQ.eyJpc3MiOiJQOTkzMlRUMjg1IiwiaWF0IjoxNTY4OTgxNjY5LCJleHAiOjE1NjkwMjQ4Njl9.RSvsp_du_uC1aI9c83bElUyBLdrIWfjIBfNZDB9twU2_mxSQL06CYqLn_01guHnjIA2swW0eGrcxC2o4tE7u3g",
+                app: {
+                    name: 'AppleMusicKitExample',
+                    build: '1978.4.1'
+                }
+            });
+
+            // setup click handlers
+            document.getElementById('add-to-q-btn').addEventListener('click', () => {
+                const idInput = document.getElementById('id-input');
+                const typeInput = document.getElementById('type-input');
+
+                /***
+                Add an item to the playback queue
+                https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance/2992716-setqueue
+                ***/
+                music.setQueue({
+                    [typeInput.value]: idInput.value
+                });
+
+                idInput.value = '';
+                typeInput.value = '';
+            });
+
+            document.getElementById('play-btn').addEventListener('click', () => {
+                /***
+                Resume or start playback of media item
+                https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance/2992709-play
+                ***/
+                music.play();
+            });
+
+            document.getElementById('pause-btn').addEventListener('click', () => {
+                /***
+                Pause playback of media item
+                https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance/2992708-pause
+                ***/
+                music.pause();
+            });
+
+            document.getElementById('login-btn').addEventListener('click', () => {
+                /***
+                Returns a promise which resolves with a music-user-token when a user successfully authenticates and authorizes
+                https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance/2992701-authorize
+                ***/
+                music.authorize().then(musicUserToken => {
+                    console.log(`Authorized, music-user-token: ${musicUserToken}`);
+                });
+            });
+
+            // expose our instance globally for testing
+            window.music = music;
+        });
+
+
+
+    </script>
+</body>
+
+</html>
