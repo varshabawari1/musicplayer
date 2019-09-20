@@ -31,16 +31,18 @@
             Configure our MusicKit instance with the signed token from server, returns a configured MusicKit Instance
             https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance
             ***/
-//             const music = MusicKit.configure({
-//                 developerToken: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZBN1BBNUZONk4ifQ.eyJpc3MiOiJQOTkzMlRUMjg1IiwiaWF0IjoxNTY4OTgxNjY5LCJleHAiOjE1NjkwMjQ4Njl9.RSvsp_du_uC1aI9c83bElUyBLdrIWfjIBfNZDB9twU2_mxSQL06CYqLn_01guHnjIA2swW0eGrcxC2o4tE7u3g",
-//                 app: {
-//                     name: 'AppleMusicKitExample',
-//                     build: '1978.4.1'
-//                 }
-//             });
-            let music = MusicKit.getInstance({
-                musicUserToken:"ApYk1lW3eFJBtBPWMJy6pNAJcQvLc8atSamB7js9kCsh7VpizsLktBEvK9v42vJ4U/ISrHJkwsEx+ys8NXoZwcLt6SToF7iRjuZVpFO/Xx9cfHeI/te71UFJsFMhXYregbWhRuzjGPmVEXPltuZhOcsgh3wLVLZQQuK58D7xMSDydtRcoG8Ewxu9h87BuYYjBEuUDad32AUa+M+HW+BQYN3muJOGWg27bDzKs/OwS8lkUpZo+A=="
+            const music = MusicKit.configure({
+                developerToken: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZBN1BBNUZONk4ifQ.eyJpc3MiOiJQOTkzMlRUMjg1IiwiaWF0IjoxNTY4OTgxNjY5LCJleHAiOjE1NjkwMjQ4Njl9.RSvsp_du_uC1aI9c83bElUyBLdrIWfjIBfNZDB9twU2_mxSQL06CYqLn_01guHnjIA2swW0eGrcxC2o4tE7u3g",
+                app: {
+                    name: 'AppleMusicKitExample',
+                    build: '1978.4.1'
+                },
+                 musicUserToken:"ApYk1lW3eFJBtBPWMJy6pNAJcQvLc8atSamB7js9kCsh7VpizsLktBEvK9v42vJ4U/ISrHJkwsEx+ys8NXoZwcLt6SToF7iRjuZVpFO/Xx9cfHeI/te71UFJsFMhXYregbWhRuzjGPmVEXPltuZhOcsgh3wLVLZQQuK58D7xMSDydtRcoG8Ewxu9h87BuYYjBEuUDad32AUa+M+HW+BQYN3muJOGWg27bDzKs/OwS8lkUpZo+A=="
+         
             });
+//             let music = MusicKit.getInstance({
+//                 musicUserToken:"ApYk1lW3eFJBtBPWMJy6pNAJcQvLc8atSamB7js9kCsh7VpizsLktBEvK9v42vJ4U/ISrHJkwsEx+ys8NXoZwcLt6SToF7iRjuZVpFO/Xx9cfHeI/te71UFJsFMhXYregbWhRuzjGPmVEXPltuZhOcsgh3wLVLZQQuK58D7xMSDydtRcoG8Ewxu9h87BuYYjBEuUDad32AUa+M+HW+BQYN3muJOGWg27bDzKs/OwS8lkUpZo+A=="
+//             });
 
             // setup click handlers
             document.getElementById('add-to-q-btn').addEventListener('click', () => {
